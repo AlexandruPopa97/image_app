@@ -21,6 +21,8 @@ class _$UrlSerializer implements StructuredSerializer<Url> {
       'small',
       serializers.serialize(object.small,
           specifiedType: const FullType(String)),
+      'full',
+      serializers.serialize(object.full, specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -41,6 +43,10 @@ class _$UrlSerializer implements StructuredSerializer<Url> {
           result.small = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'full':
+          result.full = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -51,13 +57,18 @@ class _$UrlSerializer implements StructuredSerializer<Url> {
 class _$Url extends Url {
   @override
   final String small;
+  @override
+  final String full;
 
   factory _$Url([void Function(UrlBuilder) updates]) =>
       (new UrlBuilder()..update(updates)).build();
 
-  _$Url._({this.small}) : super._() {
+  _$Url._({this.small, this.full}) : super._() {
     if (small == null) {
       throw new BuiltValueNullFieldError('Url', 'small');
+    }
+    if (full == null) {
+      throw new BuiltValueNullFieldError('Url', 'full');
     }
   }
 
@@ -71,17 +82,20 @@ class _$Url extends Url {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Url && small == other.small;
+    return other is Url && small == other.small && full == other.full;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, small.hashCode));
+    return $jf($jc($jc(0, small.hashCode), full.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Url')..add('small', small)).toString();
+    return (newBuiltValueToStringHelper('Url')
+          ..add('small', small)
+          ..add('full', full))
+        .toString();
   }
 }
 
@@ -92,11 +106,16 @@ class UrlBuilder implements Builder<Url, UrlBuilder> {
   String get small => _$this._small;
   set small(String small) => _$this._small = small;
 
+  String _full;
+  String get full => _$this._full;
+  set full(String full) => _$this._full = full;
+
   UrlBuilder();
 
   UrlBuilder get _$this {
     if (_$v != null) {
       _small = _$v.small;
+      _full = _$v.full;
       _$v = null;
     }
     return this;
@@ -117,7 +136,7 @@ class UrlBuilder implements Builder<Url, UrlBuilder> {
 
   @override
   _$Url build() {
-    final _$result = _$v ?? new _$Url._(small: small);
+    final _$result = _$v ?? new _$Url._(small: small, full: full);
     replace(_$result);
     return _$result;
   }

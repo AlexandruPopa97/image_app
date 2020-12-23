@@ -2,7 +2,6 @@ library urls;
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:built_collection/built_collection.dart';
 import 'serializers.dart';
 
 part 'urls.g.dart';
@@ -15,6 +14,7 @@ abstract class Url implements Built<Url, UrlBuilder>{
   Url._();
 
   String get small;
+  String get full;
 
   static Serializer<Url> get serializer => _$urlSerializer;
 }

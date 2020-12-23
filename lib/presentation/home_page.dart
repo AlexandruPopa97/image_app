@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_app/containers/image_container.dart';
 import 'package:image_app/models/img.dart';
+import 'package:image_app/presentation/image_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -21,7 +22,10 @@ class HomePage extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             final Img image = images[index];
             return InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push<MaterialPageRoute<dynamic>>(context,
+                    MaterialPageRoute<MaterialPageRoute<dynamic>>(builder: (BuildContext context) => ImageView(url: image.urls.full)));
+              },
               child: GridTile(
                 child: Image.network(image.urls.small),
               ),
