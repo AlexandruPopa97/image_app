@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:image_app/actions/get_images.dart';
+import 'package:image_app/actions/set_color.dart';
 import 'package:image_app/actions/set_orientation.dart';
 import 'package:image_app/actions/set_query.dart';
 import 'package:image_app/containers/image_container.dart';
 import 'package:image_app/containers/is_loading_container.dart';
-import 'package:image_app/containers/orientation_container.dart';
+import 'package:image_app/containers/search_container.dart';
 import 'package:image_app/models/app_state.dart';
 import 'package:image_app/models/img.dart';
 import 'package:image_app/presentation/image_page.dart';
-import 'package:redux/src/store.dart';
+import 'package:redux/redux.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -31,35 +32,75 @@ class HomePage extends StatelessWidget {
                   }
 
                   return Column(
-                    children: [
-                      Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 16.0, right: 8.0),
-                            child: Text('Orientation:'),
-                          ),
-                          OrientationContainer(
-                            builder: (BuildContext context, String orientation) {
-                              return DropdownButton<String>(
-                                value: orientation,
-                                hint: const Text('All'),
-                                onChanged: (String value) {
-                                  print("Noua valoare este $value");
-                                  StoreProvider.of<AppState>(context)
-                                    ..dispatch(SetOrientation(value))
-                                    ..dispatch(SetQuery(value != null ? 'All' : null))
-                                    ..dispatch(const GetImages.start(1));
-                                },
-                                items: <String>[null, 'landscape', 'portrait', 'squarish'].map((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value ?? 'All'),
-                                  );
-                                }).toList(),
-                              );
-                            },
-                          ),
-                        ],
+                    children: <Widget>[
+                      SearchContainer(
+                        builder: (BuildContext context, GetSearchParams currentSearch) {
+                          return Column(
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  const Padding(
+                                    padding: EdgeInsets.only(left: 16.0, right: 8.0),
+                                    child: Text('Orientation:'),
+                                  ),
+                                  DropdownButton<String>(
+                                    value: currentSearch.orientation,
+                                    hint: const Text('All'),
+                                    onChanged: (String value) {
+                                      print('Noua valoare este $value');
+                                      StoreProvider.of<AppState>(context)
+                                        ..dispatch(SetOrientation(value))
+                                        ..dispatch(const GetImages.start(1));
+                                    },
+                                    items: <String>[null, 'landscape', 'portrait', 'squarish'].map((String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value ?? 'All'),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  const Padding(
+                                    padding: EdgeInsets.only(left: 16.0, right: 8.0),
+                                    child: Text('Color:'),
+                                  ),
+                                  DropdownButton<String>(
+                                    value: currentSearch.color,
+                                    hint: const Text('All'),
+                                    onChanged: (String value) {
+                                      print('Noua culoare este $value');
+                                      StoreProvider.of<AppState>(context)
+                                        ..dispatch(SetColor(value))
+                                        ..dispatch(const GetImages.start(1));
+                                    },
+                                    items: <String>[
+                                      null,
+                                      'black_and_white',
+                                      'black',
+                                      'white',
+                                      'yellow',
+                                      'orange',
+                                      'red',
+                                      'purple',
+                                      'magenta',
+                                      'green',
+                                      'teal',
+                                      'blue'
+                                    ].map((String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value ?? 'All'),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ],
+                              )
+                            ],
+                          );
+                        },
                       ),
                       Expanded(
                         child: GridView.builder(
