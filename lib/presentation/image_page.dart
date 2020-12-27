@@ -10,7 +10,7 @@ class ImageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Raw Image')),
+        title: const Text('Raw Image'),
       ),
       body: Stack(
         children: <Widget>[
