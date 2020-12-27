@@ -11,12 +11,30 @@ class UnsplashApi {
 
   final Client _client;
 
-  Future<List<Img>> getImages(int page) async {
-    final Response response = await _client
-        .get('https://api.unsplash.com/photos/?client_id=AlBf115GbwgKHdMaQLvsSJkSDK8OFWPmEf-dYVJ1yFg&page=$page');
+  Future<List<Img>> getImages(int page, String orientation, String query, String color) async {
+    final Uri url = Uri(
+      scheme: 'https',
+      host: 'api.unsplash.com',
+      pathSegments: (orientation != null) ? <String>['search', 'photos'] : <String>['photos'],
+      queryParameters: <String, String>{
+        'client_id': 'AlBf115GbwgKHdMaQLvsSJkSDK8OFWPmEf-dYVJ1yFg',
+        'page': '$page',
+        if (query != null) 'query': query,
+        if (color != null) 'color': color,
+        if (orientation != null) 'orientation': orientation,
+      },
+    );
 
-    final List<dynamic> data = jsonDecode(response.body) as List<dynamic>;
-    print(jsonDecode(response.body));
-    return data.map((dynamic json) => Img.fromJson(json)).toList();
+    print(url);
+
+    final Response response = await _client.get(url);
+
+    if (query != null) {
+      final List<dynamic> data = jsonDecode(response.body)['results'] as List<dynamic>;
+      return data.map((dynamic json) => Img.fromJson(json)).toList();
+    } else {
+      final List<dynamic> data = jsonDecode(response.body) as List<dynamic>;
+      return data.map((dynamic json) => Img.fromJson(json)).toList();
+    }
   }
 }

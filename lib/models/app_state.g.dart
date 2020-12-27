@@ -13,11 +13,24 @@ class _$AppState extends AppState {
   final bool isLoading;
   @override
   final int page;
+  @override
+  final String orientation;
+  @override
+  final String query;
+  @override
+  final String color;
 
   factory _$AppState([void Function(AppStateBuilder) updates]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.images, this.isLoading, this.page}) : super._() {
+  _$AppState._(
+      {this.images,
+      this.isLoading,
+      this.page,
+      this.orientation,
+      this.query,
+      this.color})
+      : super._() {
     if (images == null) {
       throw new BuiltValueNullFieldError('AppState', 'images');
     }
@@ -42,13 +55,22 @@ class _$AppState extends AppState {
     return other is AppState &&
         images == other.images &&
         isLoading == other.isLoading &&
-        page == other.page;
+        page == other.page &&
+        orientation == other.orientation &&
+        query == other.query &&
+        color == other.color;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, images.hashCode), isLoading.hashCode), page.hashCode));
+    return $jf($jc(
+        $jc(
+            $jc(
+                $jc($jc($jc(0, images.hashCode), isLoading.hashCode),
+                    page.hashCode),
+                orientation.hashCode),
+            query.hashCode),
+        color.hashCode));
   }
 
   @override
@@ -56,7 +78,10 @@ class _$AppState extends AppState {
     return (newBuiltValueToStringHelper('AppState')
           ..add('images', images)
           ..add('isLoading', isLoading)
-          ..add('page', page))
+          ..add('page', page)
+          ..add('orientation', orientation)
+          ..add('query', query)
+          ..add('color', color))
         .toString();
   }
 }
@@ -76,6 +101,18 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   int get page => _$this._page;
   set page(int page) => _$this._page = page;
 
+  String _orientation;
+  String get orientation => _$this._orientation;
+  set orientation(String orientation) => _$this._orientation = orientation;
+
+  String _query;
+  String get query => _$this._query;
+  set query(String query) => _$this._query = query;
+
+  String _color;
+  String get color => _$this._color;
+  set color(String color) => _$this._color = color;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
@@ -83,6 +120,9 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _images = _$v.images?.toBuilder();
       _isLoading = _$v.isLoading;
       _page = _$v.page;
+      _orientation = _$v.orientation;
+      _query = _$v.query;
+      _color = _$v.color;
       _$v = null;
     }
     return this;
@@ -107,7 +147,12 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
     try {
       _$result = _$v ??
           new _$AppState._(
-              images: images.build(), isLoading: isLoading, page: page);
+              images: images.build(),
+              isLoading: isLoading,
+              page: page,
+              orientation: orientation,
+              query: query,
+              color: color);
     } catch (_) {
       String _$failedField;
       try {

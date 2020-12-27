@@ -21,7 +21,7 @@ void main() {
     middleware: appMiddleware.middleware,
   );
 
-  store.dispatch(GetImagesStart(store.state.page));
+  store.dispatch(GetImagesStart(initialState.page));
   runApp(MyApp(store: store));
 }
 

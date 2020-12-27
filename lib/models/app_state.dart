@@ -21,4 +21,13 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   bool get isLoading;
 
   int get page;
+
+  @nullable
+  String get orientation;
+
+  @nullable
+  String get query;
+
+  @nullable
+  String get color;
 }

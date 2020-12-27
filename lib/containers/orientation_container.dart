@@ -3,17 +3,17 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:image_app/models/app_state.dart';
 import 'package:redux/redux.dart';
 
-class IsLoadingContainer extends StatelessWidget {
-  const IsLoadingContainer({Key key, @required this.builder}) : super(key: key);
+class OrientationContainer extends StatelessWidget {
+  const OrientationContainer({Key key, @required this.builder}) : super(key: key);
 
-  final ViewModelBuilder<bool> builder;
+  final ViewModelBuilder<String> builder;
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, bool>(
+    return StoreConnector<AppState, String>(
       builder: builder,
       converter: (Store<AppState> store) {
-        return store.state.isLoading;
+        return store.state.orientation;
       },
     );
   }
