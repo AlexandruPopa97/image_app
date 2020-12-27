@@ -29,7 +29,9 @@ class _HomePageState extends State<HomePage> {
         return ImageContainer(
           builder: (BuildContext context, List<Img> images) {
             return Scaffold(
-              appBar: AppBar(),
+              appBar: AppBar(
+                title: const Center(child: Text('Image App')),
+              ),
               body: Builder(
                 builder: (BuildContext context) {
                   if (isLoading) {

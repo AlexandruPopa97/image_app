@@ -20,7 +20,7 @@ class UnsplashApi {
       queryParameters: <String, String>{
         'client_id': 'AlBf115GbwgKHdMaQLvsSJkSDK8OFWPmEf-dYVJ1yFg',
         'page': '$page',
-        if (query != null) 'query': query else if (orientation != null || color != null) 'query': 'all',
+        if (query != null) 'query': query else if (orientation != null || color != null) 'query': 'a',
         if (color != null) 'color': color,
         if (orientation != null) 'orientation': orientation,
       },

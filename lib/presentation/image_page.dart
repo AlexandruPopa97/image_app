@@ -9,7 +9,9 @@ class ImageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Center(child: Text('Raw Image')),
+      ),
       body: Stack(
         children: <Widget>[
           const Center(child: CircularProgressIndicator()),
