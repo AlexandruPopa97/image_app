@@ -12,8 +12,15 @@ import 'package:image_app/models/img.dart';
 import 'package:image_app/presentation/image_page.dart';
 import 'package:redux/redux.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final TextEditingController _textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +44,30 @@ class HomePage extends StatelessWidget {
                         builder: (BuildContext context, GetSearchParams currentSearch) {
                           return Column(
                             children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 16.0),
+                                    child: SizedBox(
+                                      width: 300.0,
+                                      child: TextField(
+                                        decoration: const InputDecoration(
+                                          labelText: 'Search',
+                                        ),
+                                        controller: _textController,
+                                      ),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    icon: const Icon(Icons.search),
+                                    onPressed: () {
+                                      StoreProvider.of<AppState>(context)
+                                        ..dispatch(SetQuery(_textController.text))
+                                        ..dispatch(const GetImages.start(1));
+                                    },
+                                  )
+                                ],
+                              ),
                               Row(
                                 children: <Widget>[
                                   const Padding(

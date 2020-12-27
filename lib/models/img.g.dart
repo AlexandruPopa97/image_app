@@ -15,8 +15,7 @@ class _$ImgSerializer implements StructuredSerializer<Img> {
   final String wireName = 'Img';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Img object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(Serializers serializers, Img object, {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'urls',
       serializers.serialize(object.urls, specifiedType: const FullType(Url)),
@@ -37,8 +36,7 @@ class _$ImgSerializer implements StructuredSerializer<Img> {
       final dynamic value = iterator.current;
       switch (key) {
         case 'urls':
-          result.urls.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Url)) as Url);
+          result.urls.replace(serializers.deserialize(value, specifiedType: const FullType(Url)) as Url);
           break;
       }
     }
@@ -51,8 +49,7 @@ class _$Img extends Img {
   @override
   final Url urls;
 
-  factory _$Img([void Function(ImgBuilder) updates]) =>
-      (new ImgBuilder()..update(updates)).build();
+  factory _$Img([void Function(ImgBuilder) updates]) => (new ImgBuilder()..update(updates)).build();
 
   _$Img._({this.urls}) : super._() {
     if (urls == null) {
@@ -61,8 +58,7 @@ class _$Img extends Img {
   }
 
   @override
-  Img rebuild(void Function(ImgBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+  Img rebuild(void Function(ImgBuilder) updates) => (toBuilder()..update(updates)).build();
 
   @override
   ImgBuilder toBuilder() => new ImgBuilder()..replace(this);
@@ -125,8 +121,7 @@ class ImgBuilder implements Builder<Img, ImgBuilder> {
         _$failedField = 'urls';
         urls.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'Img', _$failedField, e.toString());
+        throw new BuiltValueNestedFieldError('Img', _$failedField, e.toString());
       }
       rethrow;
     }

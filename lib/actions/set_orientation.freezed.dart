@@ -35,15 +35,13 @@ mixin _$SetOrientation {
 
 /// @nodoc
 abstract class $SetOrientationCopyWith<$Res> {
-  factory $SetOrientationCopyWith(
-          SetOrientation value, $Res Function(SetOrientation) then) =
+  factory $SetOrientationCopyWith(SetOrientation value, $Res Function(SetOrientation) then) =
       _$SetOrientationCopyWithImpl<$Res>;
   $Res call({@nullable String orientation});
 }
 
 /// @nodoc
-class _$SetOrientationCopyWithImpl<$Res>
-    implements $SetOrientationCopyWith<$Res> {
+class _$SetOrientationCopyWithImpl<$Res> implements $SetOrientationCopyWith<$Res> {
   _$SetOrientationCopyWithImpl(this._value, this._then);
 
   final SetOrientation _value;
@@ -55,28 +53,23 @@ class _$SetOrientationCopyWithImpl<$Res>
     Object orientation = freezed,
   }) {
     return _then(_value.copyWith(
-      orientation:
-          orientation == freezed ? _value.orientation : orientation as String,
+      orientation: orientation == freezed ? _value.orientation : orientation as String,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$SetOrientationCopyWith<$Res>
-    implements $SetOrientationCopyWith<$Res> {
-  factory _$SetOrientationCopyWith(
-          _SetOrientation value, $Res Function(_SetOrientation) then) =
+abstract class _$SetOrientationCopyWith<$Res> implements $SetOrientationCopyWith<$Res> {
+  factory _$SetOrientationCopyWith(_SetOrientation value, $Res Function(_SetOrientation) then) =
       __$SetOrientationCopyWithImpl<$Res>;
   @override
   $Res call({@nullable String orientation});
 }
 
 /// @nodoc
-class __$SetOrientationCopyWithImpl<$Res>
-    extends _$SetOrientationCopyWithImpl<$Res>
+class __$SetOrientationCopyWithImpl<$Res> extends _$SetOrientationCopyWithImpl<$Res>
     implements _$SetOrientationCopyWith<$Res> {
-  __$SetOrientationCopyWithImpl(
-      _SetOrientation _value, $Res Function(_SetOrientation) _then)
+  __$SetOrientationCopyWithImpl(_SetOrientation _value, $Res Function(_SetOrientation) _then)
       : super(_value, (v) => _then(v as _SetOrientation));
 
   @override
@@ -110,13 +103,11 @@ class _$_SetOrientation implements _SetOrientation {
     return identical(this, other) ||
         (other is _SetOrientation &&
             (identical(other.orientation, orientation) ||
-                const DeepCollectionEquality()
-                    .equals(other.orientation, orientation)));
+                const DeepCollectionEquality().equals(other.orientation, orientation)));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(orientation);
+  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(orientation);
 
   @override
   _$SetOrientationCopyWith<_SetOrientation> get copyWith =>
@@ -124,8 +115,7 @@ class _$_SetOrientation implements _SetOrientation {
 }
 
 abstract class _SetOrientation implements SetOrientation {
-  const factory _SetOrientation(@nullable String orientation) =
-      _$_SetOrientation;
+  const factory _SetOrientation(@nullable String orientation) = _$_SetOrientation;
 
   @override
   @nullable

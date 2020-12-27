@@ -8,9 +8,9 @@ import 'package:image_app/models/urls.dart';
 part 'serializers.g.dart';
 
 @SerializersFor(<Type>[
-        Img,
-        Url,
+  Img,
+  Url,
 ])
 Serializers serializers = (_$serializers.toBuilder() //
-        ..addPlugin(StandardJsonPlugin()))
+      ..addPlugin(StandardJsonPlugin()))
     .build();

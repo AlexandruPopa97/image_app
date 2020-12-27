@@ -20,17 +20,9 @@ class _$AppState extends AppState {
   @override
   final String color;
 
-  factory _$AppState([void Function(AppStateBuilder) updates]) =>
-      (new AppStateBuilder()..update(updates)).build();
+  factory _$AppState([void Function(AppStateBuilder) updates]) => (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._(
-      {this.images,
-      this.isLoading,
-      this.page,
-      this.orientation,
-      this.query,
-      this.color})
-      : super._() {
+  _$AppState._({this.images, this.isLoading, this.page, this.orientation, this.query, this.color}) : super._() {
     if (images == null) {
       throw new BuiltValueNullFieldError('AppState', 'images');
     }
@@ -43,8 +35,7 @@ class _$AppState extends AppState {
   }
 
   @override
-  AppState rebuild(void Function(AppStateBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+  AppState rebuild(void Function(AppStateBuilder) updates) => (toBuilder()..update(updates)).build();
 
   @override
   AppStateBuilder toBuilder() => new AppStateBuilder()..replace(this);
@@ -64,11 +55,7 @@ class _$AppState extends AppState {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, images.hashCode), isLoading.hashCode),
-                    page.hashCode),
-                orientation.hashCode),
+        $jc($jc($jc($jc($jc(0, images.hashCode), isLoading.hashCode), page.hashCode), orientation.hashCode),
             query.hashCode),
         color.hashCode));
   }
@@ -159,8 +146,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         _$failedField = 'images';
         images.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'AppState', _$failedField, e.toString());
+        throw new BuiltValueNestedFieldError('AppState', _$failedField, e.toString());
       }
       rethrow;
     }

@@ -7,7 +7,7 @@ import 'package:image_app/models/urls.dart';
 
 part 'img.g.dart';
 
-abstract class Img implements Built<Img, ImgBuilder>{
+abstract class Img implements Built<Img, ImgBuilder> {
   factory Img([void Function(ImgBuilder b) updates]) = _$Img;
   factory Img.fromJson(dynamic json) => serializers.deserializeWith(serializer, json);
 

@@ -19,7 +19,7 @@ class SearchContainer extends StatelessWidget {
   }
 }
 
-class GetSearchParams{
+class GetSearchParams {
   const GetSearchParams(this.query, this.color, this.orientation);
 
   final String query;

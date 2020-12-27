@@ -15,12 +15,10 @@ class _$UrlSerializer implements StructuredSerializer<Url> {
   final String wireName = 'Url';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Url object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(Serializers serializers, Url object, {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'small',
-      serializers.serialize(object.small,
-          specifiedType: const FullType(String)),
+      serializers.serialize(object.small, specifiedType: const FullType(String)),
       'full',
       serializers.serialize(object.full, specifiedType: const FullType(String)),
     ];
@@ -40,12 +38,10 @@ class _$UrlSerializer implements StructuredSerializer<Url> {
       final dynamic value = iterator.current;
       switch (key) {
         case 'small':
-          result.small = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.small = serializers.deserialize(value, specifiedType: const FullType(String)) as String;
           break;
         case 'full':
-          result.full = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.full = serializers.deserialize(value, specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -60,8 +56,7 @@ class _$Url extends Url {
   @override
   final String full;
 
-  factory _$Url([void Function(UrlBuilder) updates]) =>
-      (new UrlBuilder()..update(updates)).build();
+  factory _$Url([void Function(UrlBuilder) updates]) => (new UrlBuilder()..update(updates)).build();
 
   _$Url._({this.small, this.full}) : super._() {
     if (small == null) {
@@ -73,8 +68,7 @@ class _$Url extends Url {
   }
 
   @override
-  Url rebuild(void Function(UrlBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+  Url rebuild(void Function(UrlBuilder) updates) => (toBuilder()..update(updates)).build();
 
   @override
   UrlBuilder toBuilder() => new UrlBuilder()..replace(this);
@@ -92,10 +86,7 @@ class _$Url extends Url {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Url')
-          ..add('small', small)
-          ..add('full', full))
-        .toString();
+    return (newBuiltValueToStringHelper('Url')..add('small', small)..add('full', full)).toString();
   }
 }
 

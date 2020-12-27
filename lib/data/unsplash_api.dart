@@ -15,11 +15,12 @@ class UnsplashApi {
     final Uri url = Uri(
       scheme: 'https',
       host: 'api.unsplash.com',
-      pathSegments: (orientation != null) ? <String>['search', 'photos'] : <String>['photos'],
+      pathSegments:
+          (orientation != null || query != null || color != null) ? <String>['search', 'photos'] : <String>['photos'],
       queryParameters: <String, String>{
         'client_id': 'AlBf115GbwgKHdMaQLvsSJkSDK8OFWPmEf-dYVJ1yFg',
         'page': '$page',
-        if (query != null) 'query': query else if (orientation != null) 'query': 'all',
+        if (query != null) 'query': query else if (orientation != null || color != null) 'query': 'all',
         if (color != null) 'color': color,
         if (orientation != null) 'orientation': orientation,
       },
@@ -29,13 +30,10 @@ class UnsplashApi {
 
     final Response response = await _client.get(url);
 
-    if (url.queryParameters['query'] != null && url.queryParameters['orientation'] != null) {
-      print(url.queryParameters['query']);
-      print('Nu e null');
+    if (orientation != null || query != null || color != null) {
       final List<dynamic> data = jsonDecode(response.body)['results'] as List<dynamic>;
       return data.map((dynamic json) => Img.fromJson(json)).toList();
     } else {
-      print(' e null');
       final List<dynamic> data = jsonDecode(response.body) as List<dynamic>;
       return data.map((dynamic json) => Img.fromJson(json)).toList();
     }
