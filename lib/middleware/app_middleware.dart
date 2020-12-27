@@ -19,13 +19,13 @@ class AppMiddleware {
 
   Future<void> _getImagesMiddleware(Store<AppState> store, dynamic action, NextDispatcher next) async {
     next(action);
-    print(action);
-    if (action != const GetImages.start()) {
+    if (action != GetImages.start(store.state.page)) {
       return;
     }
 
     try {
-      final List<Img> images = await _unsplashApi.getImages();
+      final GetImagesStart startAction = action as GetImagesStart;
+      final List<Img> images = await _unsplashApi.getImages(startAction.page);
       final GetImagesSuccessful getImagesSuccessful = GetImagesSuccessful(images);
       store.dispatch(getImagesSuccessful);
     } catch (e) {

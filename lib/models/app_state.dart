@@ -7,9 +7,18 @@ import 'package:image_app/models/img.dart';
 part 'app_state.g.dart';
 
 abstract class AppState implements Built<AppState, AppStateBuilder> {
+  factory AppState() {
+    return _$AppState((AppStateBuilder builder) {
+      builder.isLoading = false;
+      builder.page = 1;
+    });
+  }
 
-  factory AppState([void Function(AppStateBuilder b) updates]) = _$AppState;
   AppState._();
 
   BuiltList<Img> get images;
+
+  bool get isLoading;
+
+  int get page;
 }

@@ -10,8 +10,11 @@ class ImageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: PhotoView(
-        imageProvider: NetworkImage(url),
+      body: Stack(
+        children: <Widget>[
+          const Center(child: CircularProgressIndicator()),
+          PhotoView(imageProvider: NetworkImage(url))
+        ],
       ),
     );
   }

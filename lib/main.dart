@@ -21,9 +21,7 @@ void main() {
     middleware: appMiddleware.middleware,
   );
 
-  print("Alo");
-  store.dispatch(const GetImagesStart());
-  print("I-am dat cu start");
+  store.dispatch(GetImagesStart(store.state.page));
   runApp(MyApp(store: store));
 }
 
