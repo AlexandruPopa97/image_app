@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:image_app/actions/get_images.dart';
+import 'package:image_app/actions/index.dart';
 import 'package:image_app/data/unsplash_api.dart';
-import 'package:image_app/models/app_state.dart';
+import 'package:image_app/models/index.dart';
 import 'package:meta/meta.dart';
-import 'package:image_app/models/img.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:rxdart/rxdart.dart';
 

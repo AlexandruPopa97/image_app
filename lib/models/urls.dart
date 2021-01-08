@@ -1,10 +1,4 @@
-library urls;
-
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'serializers.dart';
-
-part 'urls.g.dart';
+part of models;
 
 abstract class Url implements Built<Url, UrlBuilder> {
   factory Url([void Function(UrlBuilder b) updates]) = _$Url;

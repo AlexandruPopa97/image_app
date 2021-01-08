@@ -1,11 +1,4 @@
-library immg;
-
-import 'package:built_value/built_value.dart';
-import 'package:image_app/models/serializers.dart';
-import 'package:built_value/serializer.dart';
-import 'package:image_app/models/urls.dart';
-
-part 'img.g.dart';
+part of models;
 
 abstract class Img implements Built<Img, ImgBuilder> {
   factory Img([void Function(ImgBuilder b) updates]) = _$Img;

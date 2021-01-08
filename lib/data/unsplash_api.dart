@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:image_app/models/img.dart';
+import 'package:image_app/models/index.dart';
 import 'package:meta/meta.dart';
 
 class UnsplashApi {

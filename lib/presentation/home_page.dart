@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:image_app/actions/get_images.dart';
-import 'package:image_app/actions/set_color.dart';
-import 'package:image_app/actions/set_orientation.dart';
-import 'package:image_app/actions/set_query.dart';
+import 'package:image_app/actions/index.dart';
 import 'package:image_app/containers/image_container.dart';
 import 'package:image_app/containers/is_loading_container.dart';
 import 'package:image_app/containers/search_container.dart';
-import 'package:image_app/models/app_state.dart';
-import 'package:image_app/models/img.dart';
+import 'package:image_app/models/index.dart';
 import 'package:image_app/presentation/image_page.dart';
 import 'package:redux/redux.dart';
 

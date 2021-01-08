@@ -1,8 +1,5 @@
-import 'package:image_app/actions/get_images.dart';
-import 'package:image_app/actions/set_color.dart';
-import 'package:image_app/actions/set_orientation.dart';
-import 'package:image_app/actions/set_query.dart';
-import 'package:image_app/models/app_state.dart';
+import 'package:image_app/actions/index.dart';
+import 'package:image_app/models/index.dart';
 import 'package:redux/redux.dart';
 
 Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[

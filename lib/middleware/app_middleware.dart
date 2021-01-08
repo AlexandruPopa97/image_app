@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:image_app/actions/get_images.dart';
+import 'package:image_app/actions/index.dart';
 import 'package:image_app/data/unsplash_api.dart';
-import 'package:image_app/models/app_state.dart';
 import 'package:redux/redux.dart';
 import 'package:meta/meta.dart';
-import 'package:image_app/models/img.dart';
+import 'package:image_app/models/index.dart';
 
 class AppMiddleware {
   const AppMiddleware({@required UnsplashApi unsplashApi})
